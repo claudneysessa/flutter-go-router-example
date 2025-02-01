@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:spallawebapp/core/utils/constants.dart';
+import 'package:spallawebapp/common/routes/constants.dart';
 
 part 'navigation_state.dart';
 

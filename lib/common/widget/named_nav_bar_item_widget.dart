@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class NamedNavigationBarItemWidget extends BottomNavigationBarItem {
+class DbmCustomDrawerButton extends BottomNavigationBarItem {
   final String initialLocation;
 
-  NamedNavigationBarItemWidget({
+  DbmCustomDrawerButton({
     required this.initialLocation,
     required Widget icon,
     String? label,

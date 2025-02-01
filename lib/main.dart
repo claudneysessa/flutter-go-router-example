@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:spallawebapp/app/routes/app_routes.dart';
+import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
+import 'package:spallawebapp/presentation/application/application_widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   setUrlStrategy(PathUrlStrategy());
 
-  runApp(
-    const MyApp(),
+  GetIt.instance.registerSingleton<Logger>(
+    Logger(
+      printer: PrettyPrinter(
+        printEmojis: false,
+        noBoxingByDefault: false,
+        dateTimeFormat: DateTimeFormat.onlyTime,
+      ),
+      // filter: ProductionFilter(),
+    ),
   );
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-  });
-
-  @override
-  Widget build(
-    BuildContext context,
-  ) {
-    return MaterialApp.router(
-      title: 'Spalla Web App',
-      debugShowCheckedModeBanner: false,
-      routeInformationProvider: AppRouter.router.routeInformationProvider,
-      routeInformationParser: AppRouter.router.routeInformationParser,
-      routerDelegate: AppRouter.router.routerDelegate,
-    );
-  }
+  runApp(
+    const ApplicationWidget(),
+  );
 }
