@@ -12,12 +12,12 @@ class ProfileScreen extends StatelessWidget {
     BuildContext context,
   ) {
     return const Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.white,
       body: Center(
         child: Text(
           'Profile',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),

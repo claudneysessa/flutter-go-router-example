@@ -1,25 +1,34 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter-go-router-example",
+            "name": "flutter-go-router-example (debug)",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "preLaunchTask": "Flutter Debug with Base Tag",
+            "args": [
+                "--web-browser-flag=--disable-web-security",
+                "-d",
+                "chrome",
+                "--web-hostname",
+                "localhost",
+                "--web-port",
+                "8080"
+            ],
         },
         {
             "name": "flutter-go-router-example (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "preLaunchTask": "Flutter Release Build with Base Tag"
         },
         {
             "name": "flutter-go-router-example (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "preLaunchTask": "Flutter Release Build with Base Tag"
         }
     ]
 }

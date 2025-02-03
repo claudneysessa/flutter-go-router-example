@@ -12,12 +12,12 @@ class SettingScreen extends StatelessWidget {
     BuildContext context,
   ) {
     return const Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       body: Center(
         child: Text(
           'Settings',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),

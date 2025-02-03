@@ -20,12 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
   ) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
       body: const Center(
         child: Text(
           'Home',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),

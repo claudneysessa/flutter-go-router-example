@@ -15,9 +15,13 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <!-- Esta linha está dando problema para buildar no nginx ou no modo debug local. O $FLUTTER_BASE_HREF é substituído por / ao rodar, e isso faz com que a aplicação funcione
-    para o modo debug, mas trava no nginx. Mudando isso pra ./, isso funciona no nginx mas trava no debug. -->
-  <!-- <base href="$FLUTTER_BASE_HREF"> -->
+
+  <!--
+    Este comando serve para indicar que o meu base href ir� sempre apontar para o "/"
+    isto serve para ajustar o setUrlStrategy(PathUrlStrategy());
+  -->
+
+  <!--base-begin--><base href="/"><!--base-end-->
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -41,3 +45,20 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
