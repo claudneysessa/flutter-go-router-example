@@ -7,8 +7,6 @@ import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
 import 'package:spallawebapp/common/widget/named_nav_bar_item_widget.dart';
 import 'package:spallawebapp/presentation/dashboard/dashboard_controller.dart';
 
-import '../../common/routes/constants.dart';
-
 class DashboardView extends StatefulWidget {
   final Widget currentPageWidget;
 
