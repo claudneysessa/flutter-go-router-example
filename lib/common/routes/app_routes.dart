@@ -10,7 +10,7 @@ import 'package:spallawebapp/presentation/pages/profile/profile_details_screen.d
 import 'package:spallawebapp/presentation/pages/profile/profile_screen.dart';
 import 'package:spallawebapp/presentation/pages/settings/settings_screen.dart';
 
-import 'constants.dart';
+import 'app_routes_names.dart';
 import '../pages/not_found/not_found_page.dart';
 
 class AppRouter {
@@ -18,7 +18,7 @@ class AppRouter {
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static final GoRouter _router = GoRouter(
-    initialLocation: Routes.homeNamedPage,
+    initialLocation: AppRoutesNames.homeNamedPage,
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: [
@@ -36,7 +36,7 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            path: Routes.homeNamedPage,
+            path: AppRoutesNames.homeNamedPage,
             pageBuilder: (context, state) {
               return const NoTransitionPage(
                 child: HomeScreen(),
@@ -44,7 +44,7 @@ class AppRouter {
             },
             routes: [
               GoRoute(
-                path: Routes.homeDetailsNamedPage,
+                path: AppRoutesNames.homeDetailsNamedPage,
                 builder: (context, state) {
                   return const HomeDetailsScreen();
                 },
@@ -52,7 +52,7 @@ class AppRouter {
             ],
           ),
           GoRoute(
-            path: Routes.profileNamedPage,
+            path: AppRoutesNames.profileNamedPage,
             pageBuilder: (context, state) {
               return const NoTransitionPage(
                 child: ProfileScreen(),
@@ -60,7 +60,7 @@ class AppRouter {
             },
             routes: [
               GoRoute(
-                path: Routes.profileDetailsNamedPage,
+                path: AppRoutesNames.profileDetailsNamedPage,
                 builder: (context, state) {
                   return const ProfileDetailsScreen();
                 },
@@ -68,7 +68,7 @@ class AppRouter {
             ],
           ),
           GoRoute(
-            path: Routes.settingsNamedPage,
+            path: AppRoutesNames.settingsNamedPage,
             pageBuilder: (context, state) {
               return const NoTransitionPage(
                 child: SettingScreen(),
