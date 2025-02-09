@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
+import 'package:spallawebapp/common/navigation/navigation_state.dart';
 import 'package:spallawebapp/common/style/app_colors.dart';
-import 'package:spallawebapp/presentation/views/dashboard/dashboard_controller.dart';
+import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_drawer_button_item_data.dart';
+import 'package:spallawebapp/presentation/views/web_app/dashboard/dashboard_controller.dart';
 
 import 'dashboard_drawer_button.dart';
 
@@ -38,6 +40,7 @@ class DashboardDrawerState extends State<DashboardDrawer> {
       child: buildDrawer(
         context,
         widget.controller.dashboardMenuItens,
+        widget.controller,
       ),
     );
   }
@@ -45,7 +48,8 @@ class DashboardDrawerState extends State<DashboardDrawer> {
 
 Widget buildDrawer(
   BuildContext context,
-  List<DashboardDrawerItemData> tabs,
+  List<DashboardDrawerButtonItemData> tabs,
+  DashboardController controller,
 ) {
   return ListView(
     padding: EdgeInsets.zero,
@@ -53,6 +57,7 @@ Widget buildDrawer(
       buildNavigationButtons(
         context,
         tabs,
+        controller,
       ),
     ],
   );
@@ -60,7 +65,8 @@ Widget buildDrawer(
 
 Widget buildNavigationButtons(
   BuildContext context,
-  List<DashboardDrawerItemData> tabs,
+  List<DashboardDrawerButtonItemData> tabs,
+  DashboardController controller,
 ) {
   return BlocBuilder<NavigationCubit, NavigationState>(
     buildWhen: (previous, current) {
@@ -74,6 +80,9 @@ Widget buildNavigationButtons(
                 itemData: tab,
                 state: state,
                 index: tabs.indexOf(tab),
+                onTap: () {
+                  controller.setDrawerVisibility();
+                },
               ),
             )
             .toList(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:spallawebapp/common/style/app_colors.dart';
-import 'package:spallawebapp/presentation/views/dashboard/components/dashboard_drawer_user_panel.dart';
+import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_drawer_appbar_user_panel.dart';
 
 class DashboardDrawerAppBar extends StatefulWidget
     implements PreferredSizeWidget {
@@ -9,6 +9,7 @@ class DashboardDrawerAppBar extends StatefulWidget
   final String companyLogo;
   final String userName;
   final String userAvatar;
+  final VoidCallback onDrawerMenuTap;
 
   const DashboardDrawerAppBar({
     Key? key,
@@ -16,6 +17,7 @@ class DashboardDrawerAppBar extends StatefulWidget
     required this.companyLogo,
     required this.userName,
     required this.userAvatar,
+    required this.onDrawerMenuTap,
   }) : super(key: key);
 
   @override
@@ -41,7 +43,8 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: () =>
+              widget.onDrawerMenuTap(), // Chame a função de callback
         ),
       ),
       title: Row(
@@ -143,7 +146,7 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
             top: kToolbarHeight,
             right: 0,
             child: Material(
-              child: DashboardDrawerUserPanel(
+              child: DashboardDrawerAppBarUserPanel(
                 userName: widget.userName,
                 userAvatar: widget.userAvatar,
                 onClose: () {

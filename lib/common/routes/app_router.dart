@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:spallawebapp/presentation/views/dashboard/dashboard_view.dart';
-import 'package:spallawebapp/presentation/views/home/home_detail_view.dart';
-import 'package:spallawebapp/presentation/views/home/home_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/dashboard/dashboard_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/home/home_detail_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/home/home_view.dart';
 import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
-import 'package:spallawebapp/presentation/views/not_found/not_found_view.dart';
-import 'package:spallawebapp/presentation/views/profile/profile_detail_view.dart';
-import 'package:spallawebapp/presentation/views/profile/profile_view.dart';
-import 'package:spallawebapp/presentation/views/settings/settings_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/not_found/not_found_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/profile/profile_detail_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/profile/profile_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/settings/settings_view.dart';
 
 class AppRoutesNames {
   static const root = '/';

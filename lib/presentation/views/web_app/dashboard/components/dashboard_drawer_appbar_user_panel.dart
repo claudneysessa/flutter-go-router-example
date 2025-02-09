@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:spallawebapp/common/style/app_colors.dart';
 
-class DashboardDrawerUserPanel extends StatelessWidget {
+class DashboardDrawerAppBarUserPanel extends StatelessWidget {
   final String userName;
   final String userAvatar;
   final VoidCallback onClose;
 
-  const DashboardDrawerUserPanel({
+  const DashboardDrawerAppBarUserPanel({
     Key? key,
     required this.userName,
     required this.userAvatar,

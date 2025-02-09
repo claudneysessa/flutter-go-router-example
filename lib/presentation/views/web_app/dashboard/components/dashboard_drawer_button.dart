@@ -2,32 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
+import 'package:spallawebapp/common/navigation/navigation_state.dart';
 import 'package:spallawebapp/common/style/app_colors.dart';
+import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_drawer_button_item_data.dart';
 
 // Importe a classe DbmCustomDrawerButton
 
-class DashboardDrawerItemData {
-  final String initialLocation;
-  final Widget icon;
-  final String? label;
-
-  DashboardDrawerItemData({
-    required this.initialLocation,
-    required this.icon,
-    this.label,
-  });
-}
-
 class CustomDrawerButton extends StatelessWidget {
-  final DashboardDrawerItemData itemData;
+  final DashboardDrawerButtonItemData itemData;
   final NavigationState state;
   final int index;
+  final VoidCallback onTap;
 
   const CustomDrawerButton({
     Key? key,
     required this.itemData,
     required this.state,
     required this.index,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -39,12 +31,13 @@ class CustomDrawerButton extends StatelessWidget {
           if (state.index != index) {
             context.read<NavigationCubit>().getNavBarItem(index);
             context.go(itemData.initialLocation);
-            Navigator.of(context).pop();
+            onTap();
           }
         },
         child: Container(
           padding: const EdgeInsets.symmetric(
-              vertical: 16), // Adiciona padding vertical
+            vertical: 16,
+          ), // Adiciona padding vertical
           decoration: BoxDecoration(
             color: state.index == index
                 ? AppColors.blue // Cor quando selecionado

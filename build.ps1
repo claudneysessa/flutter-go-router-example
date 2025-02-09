@@ -23,6 +23,7 @@ if ($buildType -eq "debug") {
 } else {
     Write-Host "Building for release..."
     flutter clean
+    flutter pub cache clean
     flutter pub get
     flutter build web --release --build-name=web-release --build-number=1.0.0.0
 }
