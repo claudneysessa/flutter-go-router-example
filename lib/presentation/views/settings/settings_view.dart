@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SettingScreen extends StatelessWidget {
-  const SettingScreen({
+class SettingsView extends StatelessWidget {
+  const SettingsView({
     Key? key,
   }) : super(
           key: key,

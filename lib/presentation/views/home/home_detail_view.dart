@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeDetailsScreen extends StatelessWidget {
-  const HomeDetailsScreen({
+class HomeDetailView extends StatelessWidget {
+  const HomeDetailView({
     Key? key,
   }) : super(
           key: key,

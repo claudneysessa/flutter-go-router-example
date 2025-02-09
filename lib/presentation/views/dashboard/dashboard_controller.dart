@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:spallawebapp/common/routes/app_routes_names.dart';
-import 'package:spallawebapp/common/widget/named_nav_bar_item_widget.dart';
+import 'package:spallawebapp/common/routes/app_router.dart';
+import 'package:spallawebapp/presentation/views/dashboard/components/dashboard_drawer_button.dart';
 
 class DashboardController {
-  final itensMenuLista = [
-    DbmCustomDrawerButton(
+  final dashboardMenuItens = [
+    DashboardDrawerItemData(
       initialLocation: AppRoutesNames.homeNamedPage,
       icon: const Icon(Icons.home),
       label: 'Home',
     ),
-    DbmCustomDrawerButton(
+    DashboardDrawerItemData(
       initialLocation: AppRoutesNames.profileNamedPage,
       icon: const Icon(Icons.person),
       label: 'Profile',
     ),
-    DbmCustomDrawerButton(
+    DashboardDrawerItemData(
       initialLocation: AppRoutesNames.settingsNamedPage,
       icon: const Icon(Icons.settings),
       label: 'Setting',

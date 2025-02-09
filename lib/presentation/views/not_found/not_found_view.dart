@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NotFoundScreen extends StatelessWidget {
-  const NotFoundScreen({
+class PageNotFoundView extends StatelessWidget {
+  const PageNotFoundView({
     Key? key,
   }) : super(
           key: key,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spallawebapp/common/routes/app_routes.dart';
+import 'package:spallawebapp/common/routes/app_router.dart';
 
 class ApplicationWidget extends StatelessWidget {
   const ApplicationWidget({
