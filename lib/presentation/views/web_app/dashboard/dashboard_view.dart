@@ -23,28 +23,28 @@ class _DashboardViewState extends State<DashboardView> {
     return Scaffold(
       extendBodyBehindAppBar: false,
       appBar: DashboardDrawerAppBar(
-          companyName: 'Comercial Paty SP',
-          companyLogo:
-              'assets/images/spalla_logo.png', // Substitua pelo caminho da sua logo
-          userName: 'Antônio Carlos Debone',
-          userAvatar: 'assets/images/user_avatar.png',
-          onDrawerMenuTap: () {
-            controller.setDrawerVisibility();
-          } // Substitua pelo caminho do seu avatar
-          ),
+        companyName: 'Comercial Paty SP',
+        companyLogo: 'assets/images/spalla_logo.png',
+        userName: 'Antônio Carlos Debone',
+        userAvatar: 'assets/images/user_avatar.png',
+        onDrawerMenuTap: () {
+          controller.setDrawerVisibility();
+        },
+      ),
       body: ValueListenableBuilder(
-          valueListenable: controller.isDrawerVisible,
-          builder: (context, drawerVisibility, child) {
-            return DashboardLayout(
-              // Use o novo widget
-              isDrawerVisible: drawerVisibility,
-              onDrawerChanged: (bool visible) {
-                controller.setDrawerVisibility();
-              },
-              currentPageWidget: widget.currentPageWidget,
-              controller: controller,
-            );
-          }),
+        valueListenable: controller.isDrawerVisible,
+        builder: (context, drawerVisibility, child) {
+          return DashboardLayout(
+            // Use o novo widget
+            isDrawerVisible: drawerVisibility,
+            onDrawerChanged: (bool visible) {
+              controller.setDrawerVisibility();
+            },
+            currentPageWidget: widget.currentPageWidget,
+            controller: controller,
+          );
+        },
+      ),
     );
   }
 }

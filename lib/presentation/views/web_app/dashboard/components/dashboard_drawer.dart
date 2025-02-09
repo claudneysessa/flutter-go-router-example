@@ -38,48 +38,48 @@ class DashboardDrawerState extends State<DashboardDrawer> {
       ),
       backgroundColor: AppColors.white,
       child: buildDrawer(
-        context,
-        widget.controller.dashboardMenuItens,
-        widget.controller,
+        context: context,
+        menuItens: widget.controller.dashboardMenuItens,
+        controller: widget.controller,
       ),
     );
   }
 }
 
-Widget buildDrawer(
-  BuildContext context,
-  List<DashboardDrawerButtonItemData> tabs,
-  DashboardController controller,
-) {
+Widget buildDrawer({
+  required BuildContext context,
+  required List<DashboardDrawerButtonItemData> menuItens,
+  required DashboardController controller,
+}) {
   return ListView(
     padding: EdgeInsets.zero,
     children: [
-      buildNavigationButtons(
-        context,
-        tabs,
-        controller,
+      buildDrawerButtons(
+        context: context,
+        menuItens: menuItens,
+        controller: controller,
       ),
     ],
   );
 }
 
-Widget buildNavigationButtons(
-  BuildContext context,
-  List<DashboardDrawerButtonItemData> tabs,
-  DashboardController controller,
-) {
+Widget buildDrawerButtons({
+  required BuildContext context,
+  required List<DashboardDrawerButtonItemData> menuItens,
+  required DashboardController controller,
+}) {
   return BlocBuilder<NavigationCubit, NavigationState>(
     buildWhen: (previous, current) {
       return previous.index != current.index;
     },
     builder: (context, state) {
       return Column(
-        children: tabs
+        children: menuItens
             .map(
               (tab) => CustomDrawerButton(
                 itemData: tab,
                 state: state,
-                index: tabs.indexOf(tab),
+                index: menuItens.indexOf(tab),
                 onTap: () {
                   controller.setDrawerVisibility();
                 },
