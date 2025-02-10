@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:spallawebapp/common/components/standard_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/settings/settings_controller.dart';
 
-class SettingsView extends StatelessWidget {
+class SettingsView extends StatefulWidget {
   const SettingsView({
     Key? key,
   }) : super(
@@ -9,19 +11,31 @@ class SettingsView extends StatelessWidget {
         );
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Text(
-          'Settings',
-          style: GoogleFonts.inter(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+  State<SettingsView> createState() => _SettingsViewState();
+}
+
+class _SettingsViewState extends State<SettingsView> {
+  final controller = SettingsController();
+
+  @override
+  Widget build(BuildContext context) {
+    return StandardView(
+      title: 'Settings',
+      child: ValueListenableBuilder<bool>(
+        valueListenable: controller.isLoading,
+        builder: (context, isLoading, child) {
+          return Center(
+            child: isLoading
+                ? const CircularProgressIndicator()
+                : const Text(
+                    'Settings',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                    ),
+                  ),
+          );
+        },
       ),
     );
   }

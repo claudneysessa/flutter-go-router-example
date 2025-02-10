@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:spallawebapp/common/components/standard_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/home/home_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({
@@ -13,23 +15,27 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  final controller = HomeController();
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
-    return Scaffold(
-      key: _scaffoldKey,
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Text(
-          'Home',
-          style: GoogleFonts.inter(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+  Widget build(BuildContext context) {
+    return StandardView(
+      title: 'Home',
+      child: ValueListenableBuilder<bool>(
+        valueListenable: controller.isLoading,
+        builder: (context, isLoading, child) {
+          return Center(
+            child: isLoading
+                ? const CircularProgressIndicator()
+                : const Text(
+                    'Home',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                    ),
+                  ),
+          );
+        },
       ),
     );
   }

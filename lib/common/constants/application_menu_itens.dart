@@ -13,8 +13,18 @@ class ApplicationMenuItem {
           rota: AppRoutesNames.homeNamedPage,
         ),
         PermissaoModel(
-          nome: "Profile",
-          permissao: "profile",
+          nome: "Profile1",
+          permissao: "profile1",
+          rota: AppRoutesNames.profileNamedPage, // Corrigindo a rota
+        ),
+        PermissaoModel(
+          nome: "Profile2",
+          permissao: "profile2",
+          rota: AppRoutesNames.profileNamedPage, // Corrigindo a rota
+        ),
+        PermissaoModel(
+          nome: "Profile3",
+          permissao: "profile3",
           rota: AppRoutesNames.profileNamedPage, // Corrigindo a rota
         ),
         PermissaoModel(

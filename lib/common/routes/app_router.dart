@@ -7,10 +7,8 @@ import 'package:spallawebapp/infrastructure/services/shared_preferences/shared_p
 import 'package:spallawebapp/presentation/views/spacad/cadastro_cliente/cadastro_cliente_view.dart';
 import 'package:spallawebapp/presentation/views/spacom/vendas/vendas_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/dashboard/dashboard_view.dart';
-import 'package:spallawebapp/presentation/views/web_app/home/home_detail_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/home/home_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/not_found/not_found_view.dart';
-import 'package:spallawebapp/presentation/views/web_app/profile/profile_detail_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/profile/profile_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/settings/settings_view.dart';
 
@@ -67,14 +65,6 @@ class AppRouter {
                 child: HomeView(),
               );
             },
-            routes: [
-              GoRoute(
-                path: AppRoutesNames.homeDetailsNamedPage,
-                builder: (context, state) {
-                  return const HomeDetailView();
-                },
-              ),
-            ],
           ),
           GoRoute(
             path: AppRoutesNames.profileNamedPage,
@@ -83,14 +73,6 @@ class AppRouter {
                 child: ProfileView(),
               );
             },
-            routes: [
-              GoRoute(
-                path: AppRoutesNames.profileDetailsNamedPage,
-                builder: (context, state) {
-                  return const ProfileDetailView();
-                },
-              ),
-            ],
           ),
           GoRoute(
             path: AppRoutesNames.settingsNamedPage,

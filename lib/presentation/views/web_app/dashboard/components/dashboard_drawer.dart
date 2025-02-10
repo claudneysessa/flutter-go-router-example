@@ -30,7 +30,7 @@ class DashboardDrawerState extends State<DashboardDrawer> {
       builder: (context, state) {
         return Drawer(
           width: DashboardConstants.drawerWidth,
-          shadowColor: Colors.black,
+          shadowColor: Colors.white,
           elevation: 25,
           shape: const Border(
             right: BorderSide(

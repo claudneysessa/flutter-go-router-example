@@ -18,12 +18,12 @@ class StandardAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         style: const TextStyle(
-          color: AppColors.white,
+          color: AppColors.black,
           fontSize: 24,
         ),
       ),
       centerTitle: true,
-      backgroundColor: AppColors.blueBackground,
+      backgroundColor: AppColors.white,
       elevation: 4,
       shadowColor: Colors.black26,
     );

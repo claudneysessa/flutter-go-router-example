@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:spallawebapp/common/components/standard_view.dart';
+import 'package:spallawebapp/presentation/views/web_app/profile/profile_controller.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({
     Key? key,
   }) : super(
@@ -9,19 +11,31 @@ class ProfileView extends StatelessWidget {
         );
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Text(
-          'Profile',
-          style: GoogleFonts.inter(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  final controller = ProfileController();
+
+  @override
+  Widget build(BuildContext context) {
+    return StandardView(
+      title: 'Profile',
+      child: ValueListenableBuilder<bool>(
+        valueListenable: controller.isLoading,
+        builder: (context, isLoading, child) {
+          return Center(
+            child: isLoading
+                ? const CircularProgressIndicator()
+                : const Text(
+                    'Profile',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                    ),
+                  ),
+          );
+        },
       ),
     );
   }

@@ -39,7 +39,7 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.blueBackground,
+      backgroundColor: AppColors.blueInfo,
       leading: Builder(
         builder: (context) => IconButton(
           icon: const Icon(Icons.menu),

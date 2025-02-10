@@ -7,15 +7,18 @@ class AppColors {
     const Color.fromRGBO(41, 121, 255, 1),
     AppColors.iceWhite,
   ];
+
   static List<Color> backGroundHomeLinearGradient = [
     const Color.fromARGB(255, 16, 54, 110),
     const Color.fromARGB(255, 51, 114, 184),
     Colors.blueAccent[400]!,
   ];
+
   static List<Color> greenBarLinearGradient = [
     const Color.fromARGB(255, 15, 126, 83),
     const Color.fromARGB(255, 0, 255, 157),
   ];
+
   static List<Color> redBarLinearGradient = [
     const Color.fromARGB(255, 133, 13, 13),
     const Color.fromARGB(255, 255, 80, 80)
