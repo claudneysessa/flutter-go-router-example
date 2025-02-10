@@ -23,14 +23,14 @@ class DashboardController {
     return permissions
         .map((permission) => DashboardDrawerButtonItemData(
               initialLocation: permission.rota ?? AppRoutesNames.homeNamedPage,
-              icon: _getIconForPermission(permission.permissao ?? ''),
+              icon: getIconForPermission(permission.permissao ?? ''),
               label: permission.nome,
               permissionKey: permission.permissao ?? '',
             ))
         .toList();
   }
 
-  Icon _getIconForPermission(String permission) {
+  Icon getIconForPermission(String permission) {
     switch (permission) {
       case 'home':
         return const Icon(Icons.home);
@@ -38,6 +38,10 @@ class DashboardController {
         return const Icon(Icons.person);
       case 'settings':
         return const Icon(Icons.settings);
+      case 'CadastrodeClientes1':
+        return const Icon(Icons.people_alt);
+      case 'SpacomPedidoCliente1':
+        return const Icon(Icons.shopping_cart);
       default:
         return const Icon(Icons.menu);
     }

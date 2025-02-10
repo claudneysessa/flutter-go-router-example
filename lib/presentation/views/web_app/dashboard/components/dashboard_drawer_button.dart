@@ -11,6 +11,7 @@ class CustomDrawerButton extends StatelessWidget {
   final NavigationState state;
   final String permissionKey;
   final VoidCallback onTap;
+  final bool isSelected;
 
   const CustomDrawerButton({
     Key? key,
@@ -18,35 +19,24 @@ class CustomDrawerButton extends StatelessWidget {
     required this.state,
     required this.permissionKey,
     required this.onTap,
+    this.isSelected = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final bool isCurrentRoute =
-        state.bottomNavItems == itemData.initialLocation;
-    final bool isCurrentPermission = state.permissionKey == permissionKey;
-
     return SizedBox(
       width: double.infinity,
       child: InkWell(
-        onTap: () async {
-          if (!isCurrentPermission || !isCurrentRoute) {
-            // Primeiro atualiza o estado de navegação
-            await context.read<NavigationCubit>().getNavBarItem(permissionKey);
-
-            if (!isCurrentRoute && context.mounted) {
-              // Depois navega para a nova rota
-              context.go(itemData.initialLocation);
-            }
-
-            // Por último, fecha o drawer
-            onTap();
-          }
+        onTap: () {
+          // Navega para a rota
+          context.go(itemData.initialLocation);
+          // Executa o callback para fechar o drawer
+          onTap();
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-            color: isCurrentPermission ? AppColors.blue : AppColors.white,
+            color: isSelected ? AppColors.blue : AppColors.white,
             border: const Border(
               bottom: BorderSide(
                 color: AppColors.greyDivider,
@@ -62,8 +52,7 @@ class CustomDrawerButton extends StatelessWidget {
               Text(
                 itemData.label ?? '',
                 style: TextStyle(
-                  color:
-                      isCurrentPermission ? AppColors.white : AppColors.black,
+                  color: isSelected ? AppColors.white : AppColors.black,
                 ),
               ),
             ],

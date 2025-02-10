@@ -21,7 +21,7 @@ class AppColors {
     const Color.fromARGB(255, 255, 80, 80)
   ];
 
-  static const Color blue = Color(0xff499FF6);
+  static const Color blue = Color(0xFF1976D2);
   static const Color blueDark = Color.fromARGB(255, 16, 54, 110);
   static const Color purple = Color.fromARGB(255, 153, 102, 204);
   static const Color green = Color.fromARGB(255, 24, 196, 130);
@@ -31,16 +31,16 @@ class AppColors {
   static const Color iceWhite = Color.fromARGB(255, 237, 240, 245);
   static const Color grey = Color(0xff828b93);
   static const Color greyMidLight = Color(0xffedeff2);
-  static const Color greyLight = Color(0xfff5f8fa);
+  static const Color greyLight = Color(0xFFF5F5F5);
   static const Color greyText = Color(0xffedeff2);
-  static const Color greyDivider = Color(0xffc8ccd1);
-  static const Color greyDark = Color(0xff282d32);
+  static const Color greyDivider = Color(0xFFE0E0E0);
+  static const Color greyDark = Color(0xFF757575);
   static const Color blackLight = Color(0xff191e23);
 
   static const Color greenInfo = Color(0xff14C194);
   static const Color greenBackground = Color(0xffb9ecdf);
   static const Color yellowInfo = Color(0xffE09500);
   static const Color yellowBackground = Color(0xfff8e5c0);
-  static const Color blueInfo = Color(0xff2585C7);
-  static const Color blueBackground = Color(0xffBDDDFC);
+  static const Color blueInfo = Color(0xFF64B5F6);
+  static const Color blueBackground = Color(0xFF2196F3);
 }

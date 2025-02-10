@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
 import 'package:spallawebapp/infrastructure/services/navigation/navigation_service.dart';
 import 'package:spallawebapp/infrastructure/services/shared_preferences/shared_preferences_service.dart';
+import 'package:spallawebapp/presentation/views/spacad/cadastro_cliente/cadastro_cliente_view.dart';
+import 'package:spallawebapp/presentation/views/spacom/vendas/vendas_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/dashboard/dashboard_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/home/home_detail_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/home/home_view.dart';
@@ -19,6 +21,8 @@ class AppRoutesNames {
   static const profileNamedPage = '/profile';
   static const profileDetailsNamedPage = 'details';
   static const settingsNamedPage = '/settings';
+  static const cadastroClientesNamedPage = '/cadastro-clientes';
+  static const vendasNamedPage = '/vendas';
 
   static Widget errorWidget(BuildContext context, GoRouterState state) {
     return const PageNotFoundView();
@@ -96,12 +100,26 @@ class AppRouter {
               );
             },
           ),
+          GoRoute(
+            path: AppRoutesNames.cadastroClientesNamedPage,
+            pageBuilder: (context, state) {
+              return const NoTransitionPage(
+                child: CadastroClienteView(),
+              );
+            },
+          ),
+          GoRoute(
+            path: AppRoutesNames.vendasNamedPage,
+            pageBuilder: (context, state) {
+              return const NoTransitionPage(
+                child: VendasView(),
+              );
+            },
+          ),
         ],
       ),
     ],
-    errorBuilder: (context, state) {
-      return const PageNotFoundView();
-    },
+    errorBuilder: AppRoutesNames.errorWidget,
   );
 
   static GoRouter get router => _router;

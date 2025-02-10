@@ -30,7 +30,7 @@ class ApplicationMenuItem {
         PermissaoModel(
           nome: "Cadastro de Clientes",
           permissao: "CadastrodeClientes1",
-          rota: AppRoutesNames.homeNamedPage,
+          rota: AppRoutesNames.cadastroClientesNamedPage,
         ),
       ],
     ),
@@ -40,7 +40,7 @@ class ApplicationMenuItem {
         PermissaoModel(
           nome: "Pedido de Venda",
           permissao: "SpacomPedidoCliente1",
-          rota: AppRoutesNames.profileNamedPage,
+          rota: AppRoutesNames.vendasNamedPage,
         ),
       ],
     )
