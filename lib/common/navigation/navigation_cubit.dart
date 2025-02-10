@@ -1,49 +1,37 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spallawebapp/common/navigation/navigation_state.dart';
 import 'package:spallawebapp/common/routes/app_router.dart';
-import 'package:spallawebapp/infrastructure/services/shared_preferences/shared_preferences_service.dart';
+import 'package:spallawebapp/domain/interfaces/i_navigation_service.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
-  final SharedPreferencesService _navigationCubitService =
-      SharedPreferencesService();
+  final INavigationService _navigationService;
 
-  NavigationCubit()
+  NavigationCubit(this._navigationService)
       : super(const NavigationState(
           bottomNavItems: AppRoutesNames.homeNamedPage,
-          index: 0,
+          permissionKey: 'home',
         )) {
     _loadState();
   }
 
   Future<void> _loadState() async {
-    final index = await _navigationCubitService.getNavIndex();
-    getNavBarItem(index);
+    final permissionKey =
+        await _navigationService.getCurrentPermissionKey() ?? 'home';
+    getNavBarItem(permissionKey);
   }
 
-  Future<void> _saveState(int index) async {
-    await _navigationCubitService.setNavIndex(index);
-  }
+  void getNavBarItem(String permissionKey) async {
+    // Primeiro salva a permissão
+    await _navigationService.savePermissionKey(permissionKey);
 
-  void getNavBarItem(int index) {
-    String routeName;
+    // Depois obtém a rota correspondente
+    final route = _navigationService.getRouteByPermission(permissionKey) ??
+        AppRoutesNames.homeNamedPage;
 
-    switch (index) {
-      case 0:
-        routeName = AppRoutesNames.homeNamedPage;
-        break;
-      case 1:
-        routeName = AppRoutesNames.profileNamedPage;
-        break;
-      case 2:
-        routeName = AppRoutesNames.settingsNamedPage;
-        break;
-      default:
-        routeName = AppRoutesNames.homeNamedPage;
-        index = 0;
-        break;
-    }
-
-    emit(NavigationState(bottomNavItems: routeName, index: index));
-    _saveState(index);
+    // Por fim, emite o novo estado
+    emit(NavigationState(
+      bottomNavItems: route,
+      permissionKey: permissionKey,
+    ));
   }
 }

@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class NavigationState extends Equatable {
   final String bottomNavItems;
-  final int index;
+  final String permissionKey;
 
   const NavigationState({
     required this.bottomNavItems,
-    required this.index,
+    required this.permissionKey,
   });
 
   @override
-  List<Object> get props => [bottomNavItems, index];
+  List<Object> get props => [bottomNavItems, permissionKey];
 }

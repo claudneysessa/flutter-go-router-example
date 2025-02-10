@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
 import 'package:spallawebapp/common/navigation/navigation_state.dart';
 import 'package:spallawebapp/common/style/app_colors.dart';
-import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_drawer_button_item_data.dart';
 import 'package:spallawebapp/presentation/views/web_app/dashboard/dashboard_controller.dart';
-
+import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_layout.dart';
 import 'dashboard_drawer_button.dart';
 
 class DashboardDrawer extends StatefulWidget {
-  final BuildContext context;
   final DashboardController controller;
 
   const DashboardDrawer({
     Key? key,
-    required this.context,
     required this.controller,
   }) : super(key: key);
 
@@ -26,67 +22,37 @@ class DashboardDrawer extends StatefulWidget {
 class DashboardDrawerState extends State<DashboardDrawer> {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      width: 425,
-      shadowColor: Colors.black,
-      elevation: 25,
-      shape: const Border(
-        right: BorderSide(
-          color: AppColors.greyDivider,
-          width: 3,
-        ),
-      ),
-      backgroundColor: AppColors.white,
-      child: buildDrawer(
-        context: context,
-        dashboardMenuItens: widget.controller.dashboardMenuItens,
-        controller: widget.controller,
-      ),
+    return BlocBuilder<NavigationCubit, NavigationState>(
+      buildWhen: (previous, current) =>
+          previous.permissionKey != current.permissionKey,
+      builder: (context, state) {
+        return Drawer(
+          width: DashboardConstants.drawerWidth,
+          shadowColor: Colors.black,
+          elevation: 25,
+          shape: Border(
+            right: BorderSide(
+              color: AppColors.greyDivider,
+              width: DashboardConstants.drawerBorderWidth,
+            ),
+          ),
+          backgroundColor: AppColors.white,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: widget.controller
+                .getMenuItems('SPAAPP')
+                .map(
+                  (dashboardMenuItem) => CustomDrawerButton(
+                    itemData: dashboardMenuItem,
+                    state: state,
+                    permissionKey: dashboardMenuItem.permissionKey,
+                    onTap: () => widget.controller.toggleDrawerVisibility(),
+                  ),
+                )
+                .toList(),
+          ),
+        );
+      },
     );
   }
-}
-
-Widget buildDrawer({
-  required BuildContext context,
-  required List<DashboardDrawerButtonItemData> dashboardMenuItens,
-  required DashboardController controller,
-}) {
-  return ListView(
-    padding: EdgeInsets.zero,
-    children: [
-      buildDrawerButtons(
-        context: context,
-        dashboardMenuItens: dashboardMenuItens,
-        controller: controller,
-      ),
-    ],
-  );
-}
-
-Widget buildDrawerButtons({
-  required BuildContext context,
-  required List<DashboardDrawerButtonItemData> dashboardMenuItens,
-  required DashboardController controller,
-}) {
-  return BlocBuilder<NavigationCubit, NavigationState>(
-    buildWhen: (previous, current) {
-      return previous.index != current.index;
-    },
-    builder: (context, state) {
-      return Column(
-        children: dashboardMenuItens
-            .map(
-              (dashboardMenuItem) => CustomDrawerButton(
-                itemData: dashboardMenuItem,
-                state: state,
-                index: dashboardMenuItens.indexOf(dashboardMenuItem),
-                onTap: () {
-                  controller.setDrawerVisibility();
-                },
-              ),
-            )
-            .toList(),
-      );
-    },
-  );
 }

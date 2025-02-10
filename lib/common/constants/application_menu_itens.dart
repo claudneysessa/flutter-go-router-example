@@ -15,12 +15,12 @@ class ApplicationMenuItem {
         PermissaoModel(
           nome: "Profile",
           permissao: "profile",
-          rota: AppRoutesNames.homeNamedPage,
+          rota: AppRoutesNames.profileNamedPage, // Corrigindo a rota
         ),
         PermissaoModel(
           nome: "Settings",
           permissao: "settings",
-          rota: AppRoutesNames.homeNamedPage,
+          rota: AppRoutesNames.settingsNamedPage, // Corrigindo a rota
         ),
       ],
     ),
@@ -48,71 +48,66 @@ class ApplicationMenuItem {
 
   static List<ModuloModel> get listaMenu => _listaMenu;
 
-  static obterNomePorPermissao(String permissao) {
+  static T? _findPermissao<T>(bool Function(PermissaoModel) predicate,
+      T Function(PermissaoModel) selector) {
     for (var item in listaMenu) {
       for (var subItem in item.permissoes!) {
-        if (subItem.permissao == permissao) {
-          return subItem.nome;
+        if (predicate(subItem)) {
+          return selector(subItem);
         }
       }
     }
+    return null;
   }
 
-  static obterNomePorRota(String rota) {
-    for (var item in listaMenu) {
-      for (var subItem in item.permissoes!) {
-        if (subItem.rota == rota) {
-          return subItem.nome;
-        }
-      }
-    }
+  static String? obterNomePorPermissao(String permissao) {
+    return _findPermissao(
+      (p) => p.permissao == permissao,
+      (p) => p.nome!,
+    );
   }
 
-  static obterRotaPorNome(String nome) {
-    for (var item in listaMenu) {
-      for (var subItem in item.permissoes!) {
-        if (subItem.nome == nome) {
-          return subItem.rota;
-        }
-      }
-    }
+  static String? obterNomePorRota(String rota) {
+    return _findPermissao(
+      (p) => p.rota == rota,
+      (p) => p.nome!,
+    );
   }
 
-  static obterRotaPorPermissao(String permissao) {
-    for (var item in listaMenu) {
-      for (var subItem in item.permissoes!) {
-        if (subItem.permissao == permissao) {
-          return subItem.rota;
-        }
-      }
-    }
+  static String? obterRotaPorNome(String nome) {
+    return _findPermissao(
+      (p) => p.nome == nome,
+      (p) => p.rota!,
+    );
   }
 
-  static obterPermissaoPorNome(String nome) {
-    for (var item in listaMenu) {
-      for (var subItem in item.permissoes!) {
-        if (subItem.nome == nome) {
-          return subItem.permissao;
-        }
-      }
-    }
+  static String? obterRotaPorPermissao(String permissao) {
+    return _findPermissao(
+      (p) => p.permissao == permissao,
+      (p) => p.rota!,
+    );
   }
 
-  static obterPermissaoPorRota(String rota) {
-    for (var item in listaMenu) {
-      for (var subItem in item.permissoes!) {
-        if (subItem.rota == rota) {
-          return subItem.permissao;
-        }
-      }
-    }
+  static String? obterPermissaoPorNome(String nome) {
+    return _findPermissao(
+      (p) => p.nome == nome,
+      (p) => p.permissao!,
+    );
   }
 
-  static obterPermissoesPorModulo(String modulo) {
+  static String? obterPermissaoPorRota(String rota) {
+    return _findPermissao(
+      (p) => p.rota == rota,
+      (p) => p.permissao!,
+    );
+  }
+
+  static List<PermissaoModel>? obterPermissoesPorModulo(String modulo) {
     for (var item in listaMenu) {
       if (item.nome == modulo) {
         return item.permissoes;
       }
     }
+    return null;
   }
 }

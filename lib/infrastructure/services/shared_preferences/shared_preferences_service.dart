@@ -1,15 +1,15 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesService {
-  static const String _navIndexKey = 'nav_index';
+  static const String _navPermissionKey = 'nav_permission_key';
 
-  Future<int> getNavIndex() async {
+  Future<String?> getNavPermissionKey() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getInt(_navIndexKey) ?? 0;
+    return prefs.getString(_navPermissionKey);
   }
 
-  Future<void> setNavIndex(int index) async {
+  Future<void> setNavPermissionKey(String permissionKey) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(_navIndexKey, index);
+    await prefs.setString(_navPermissionKey, permissionKey);
   }
 }

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_drawer.dart';
 import 'package:spallawebapp/presentation/views/web_app/dashboard/dashboard_controller.dart';
+import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_drawer.dart';
+
+class DashboardConstants {
+  static const double drawerWidth = 425.0;
+  static const Duration drawerAnimationDuration = Duration(milliseconds: 200);
+  static const double drawerBorderWidth = 3.0;
+}
 
 class DashboardLayout extends StatelessWidget {
   final bool isDrawerVisible;
@@ -22,17 +28,12 @@ class DashboardLayout extends StatelessWidget {
       children: [
         currentPageWidget,
         AnimatedPositioned(
-          duration: const Duration(
-            milliseconds: 200,
-          ),
-          left: isDrawerVisible ? 0 : -425,
+          duration: DashboardConstants.drawerAnimationDuration,
+          left: isDrawerVisible ? 0 : -DashboardConstants.drawerWidth,
           top: 0,
           bottom: 0,
-          width: 425,
-          child: DashboardDrawer(
-            context: context,
-            controller: controller,
-          ),
+          width: DashboardConstants.drawerWidth,
+          child: DashboardDrawer(controller: controller),
         ),
       ],
     );

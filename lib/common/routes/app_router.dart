@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
+import 'package:spallawebapp/infrastructure/services/navigation/navigation_service.dart';
+import 'package:spallawebapp/infrastructure/services/shared_preferences/shared_preferences_service.dart';
 import 'package:spallawebapp/presentation/views/web_app/dashboard/dashboard_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/home/home_detail_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/home/home_view.dart';
-import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
 import 'package:spallawebapp/presentation/views/web_app/not_found/not_found_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/profile/profile_detail_view.dart';
 import 'package:spallawebapp/presentation/views/web_app/profile/profile_view.dart';
@@ -27,6 +29,9 @@ class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
+  static final navigationService =
+      NavigationService(SharedPreferencesService());
+
   static final GoRouter _router = GoRouter(
     initialLocation: AppRoutesNames.root,
     debugLogDiagnostics: true,
@@ -36,9 +41,7 @@ class AppRouter {
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
           return BlocProvider(
-            create: (context) {
-              return NavigationCubit();
-            },
+            create: (context) => NavigationCubit(navigationService),
             child: DashboardView(
               currentPageWidget: child,
             ),

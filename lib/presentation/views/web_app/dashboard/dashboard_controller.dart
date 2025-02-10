@@ -1,29 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:spallawebapp/common/routes/app_router.dart';
+import 'package:spallawebapp/domain/interfaces/i_navigation_service.dart';
 import 'package:spallawebapp/presentation/views/web_app/dashboard/components/dashboard_drawer_button_item_data.dart';
 
 class DashboardController {
-  ValueNotifier<bool> isDrawerVisible = ValueNotifier<bool>(false);
+  final INavigationService _navigationService;
+  final ValueNotifier<bool> _drawerVisibility = ValueNotifier<bool>(false);
 
-  setDrawerVisibility() {
-    isDrawerVisible.value = !isDrawerVisible.value;
+  DashboardController(this._navigationService);
+
+  ValueNotifier<bool> get drawerVisibility => _drawerVisibility;
+
+  void toggleDrawerVisibility() {
+    _drawerVisibility.value = !_drawerVisibility.value;
   }
 
-  final dashboardMenuItens = [
-    DashboardDrawerButtonItemData(
-      initialLocation: AppRoutesNames.homeNamedPage,
-      icon: const Icon(Icons.home),
-      label: 'Home',
-    ),
-    DashboardDrawerButtonItemData(
-      initialLocation: AppRoutesNames.profileNamedPage,
-      icon: const Icon(Icons.person),
-      label: 'Profile',
-    ),
-    DashboardDrawerButtonItemData(
-      initialLocation: AppRoutesNames.settingsNamedPage,
-      icon: const Icon(Icons.settings),
-      label: 'Setting',
-    ),
-  ];
+  List<DashboardDrawerButtonItemData> getMenuItems(String module) {
+    final permissions = _navigationService.getPermissionsByModule(module);
+
+    if (permissions == null) return [];
+
+    return permissions
+        .map((permission) => DashboardDrawerButtonItemData(
+              initialLocation: permission.rota ?? AppRoutesNames.homeNamedPage,
+              icon: _getIconForPermission(permission.permissao ?? ''),
+              label: permission.nome,
+              permissionKey: permission.permissao ?? '',
+            ))
+        .toList();
+  }
+
+  Icon _getIconForPermission(String permission) {
+    switch (permission) {
+      case 'home':
+        return const Icon(Icons.home);
+      case 'profile':
+        return const Icon(Icons.person);
+      case 'settings':
+        return const Icon(Icons.settings);
+      default:
+        return const Icon(Icons.menu);
+    }
+  }
 }
