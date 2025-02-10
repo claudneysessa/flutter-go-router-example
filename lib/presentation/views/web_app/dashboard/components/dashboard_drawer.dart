@@ -30,7 +30,7 @@ class DashboardDrawerState extends State<DashboardDrawer> {
           width: DashboardConstants.drawerWidth,
           shadowColor: Colors.black,
           elevation: 25,
-          shape: Border(
+          shape: const Border(
             right: BorderSide(
               color: AppColors.greyDivider,
               width: DashboardConstants.drawerBorderWidth,
@@ -43,6 +43,7 @@ class DashboardDrawerState extends State<DashboardDrawer> {
                 .getMenuItems('SPAAPP')
                 .map(
                   (dashboardMenuItem) => CustomDrawerButton(
+                    key: ValueKey(dashboardMenuItem.permissionKey),
                     itemData: dashboardMenuItem,
                     state: state,
                     permissionKey: dashboardMenuItem.permissionKey,

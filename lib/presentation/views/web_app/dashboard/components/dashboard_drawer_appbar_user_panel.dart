@@ -46,6 +46,7 @@ class DashboardDrawerAppBarUserPanel extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
+                // Executando o callback de fechamento de forma síncrona
                 onClose();
               },
               style: ElevatedButton.styleFrom(

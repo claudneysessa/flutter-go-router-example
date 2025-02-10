@@ -20,7 +20,7 @@ class NavigationCubit extends Cubit<NavigationState> {
     getNavBarItem(permissionKey);
   }
 
-  void getNavBarItem(String permissionKey) async {
+  Future<void> getNavBarItem(String permissionKey) async {
     // Primeiro salva a permissão
     await _navigationService.savePermissionKey(permissionKey);
 

@@ -29,14 +29,17 @@ class CustomDrawerButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: InkWell(
-        onTap: () {
+        onTap: () async {
           if (!isCurrentPermission || !isCurrentRoute) {
-            context.read<NavigationCubit>().getNavBarItem(permissionKey);
+            // Primeiro atualiza o estado de navegação
+            await context.read<NavigationCubit>().getNavBarItem(permissionKey);
 
-            if (!isCurrentRoute) {
-              Future.microtask(() => context.go(itemData.initialLocation));
+            if (!isCurrentRoute && context.mounted) {
+              // Depois navega para a nova rota
+              context.go(itemData.initialLocation);
             }
 
+            // Por último, fecha o drawer
             onTap();
           }
         },
