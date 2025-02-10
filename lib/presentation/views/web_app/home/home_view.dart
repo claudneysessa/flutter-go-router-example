@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({
@@ -21,11 +22,12 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      body: const Center(
+      body: Center(
         child: Text(
           'Home',
-          style: TextStyle(
-            color: Colors.black,
+          style: GoogleFonts.inter(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

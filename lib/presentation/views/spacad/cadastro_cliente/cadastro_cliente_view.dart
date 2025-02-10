@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:spallawebapp/presentation/views/spacad/cadastro_cliente/cadastro_cliente_controller.dart';
 
 class CadastroClienteView extends StatefulWidget {
@@ -21,11 +22,11 @@ class _CadastroClienteViewState extends State<CadastroClienteView> {
           return Center(
             child: isLoading
                 ? const CircularProgressIndicator()
-                : const Text(
+                : Text(
                     'Cadastro de Clientes',
-                    style: TextStyle(
-                      color: Colors.black,
+                    style: GoogleFonts.inter(
                       fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
           );

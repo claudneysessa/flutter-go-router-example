@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:spallawebapp/presentation/views/spacom/vendas/vendas_controller.dart';
 
 class VendasView extends StatefulWidget {
@@ -21,11 +22,11 @@ class _VendasViewState extends State<VendasView> {
           return Center(
             child: isLoading
                 ? const CircularProgressIndicator()
-                : const Text(
-                    'Pedido de Venda',
-                    style: TextStyle(
-                      color: Colors.black,
+                : Text(
+                    'Vendas',
+                    style: GoogleFonts.inter(
                       fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
           );

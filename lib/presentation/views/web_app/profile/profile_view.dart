@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({
@@ -11,13 +12,14 @@ class ProfileView extends StatelessWidget {
   Widget build(
     BuildContext context,
   ) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Text(
           'Profile',
-          style: TextStyle(
-            color: Colors.black,
+          style: GoogleFonts.inter(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
