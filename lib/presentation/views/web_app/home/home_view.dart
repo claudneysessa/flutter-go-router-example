@@ -27,9 +27,9 @@ class _HomeViewState extends State<HomeView> {
           return Center(
             child: isLoading
                 ? const CircularProgressIndicator()
-                : const Text(
+                : Text(
                     'Home',
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
                       color: Colors.black,
                       fontSize: 24,
                     ),

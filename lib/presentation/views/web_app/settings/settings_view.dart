@@ -27,9 +27,9 @@ class _SettingsViewState extends State<SettingsView> {
           return Center(
             child: isLoading
                 ? const CircularProgressIndicator()
-                : const Text(
+                : Text(
                     'Settings',
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
                       color: Colors.black,
                       fontSize: 24,
                     ),

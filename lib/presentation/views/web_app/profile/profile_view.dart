@@ -27,9 +27,9 @@ class _ProfileViewState extends State<ProfileView> {
           return Center(
             child: isLoading
                 ? const CircularProgressIndicator()
-                : const Text(
+                : Text(
                     'Profile',
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
                       color: Colors.black,
                       fontSize: 24,
                     ),
