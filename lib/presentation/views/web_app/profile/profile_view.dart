@@ -18,6 +18,12 @@ class _ProfileViewState extends State<ProfileView> {
   final controller = ProfileController();
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StandardView(
       title: 'Profile',

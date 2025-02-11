@@ -13,6 +13,12 @@ class _VendasViewState extends State<VendasView> {
   final controller = VendasController();
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StandardView(
       title: 'Pedido de Venda',

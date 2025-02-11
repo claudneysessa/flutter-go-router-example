@@ -18,6 +18,12 @@ class _SettingsViewState extends State<SettingsView> {
   final controller = SettingsController();
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StandardView(
       title: 'Settings',

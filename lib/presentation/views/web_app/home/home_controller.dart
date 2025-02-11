@@ -1,13 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:spallawebapp/common/controllers/base_controller.dart';
 
-class HomeController {
-  final ValueNotifier<bool> _isLoading = ValueNotifier<bool>(false);
-
-  ValueNotifier<bool> get isLoading => _isLoading;
-
-  void toggleLoading() {
-    _isLoading.value = !_isLoading.value;
-  }
-
-  // Métodos futuros para manipulação de clientes
+class HomeController extends BaseController {
+  // Métodos específicos do HomeController podem ser adicionados aqui
 }

@@ -1,13 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:spallawebapp/common/controllers/base_controller.dart';
 
-class PageNotFoundController {
-  final ValueNotifier<bool> _isLoading = ValueNotifier<bool>(false);
-
-  ValueNotifier<bool> get isLoading => _isLoading;
-
-  void toggleLoading() {
-    _isLoading.value = !_isLoading.value;
-  }
-
-  // Métodos futuros para manipulação de clientes
+class PageNotFoundController extends BaseController {
+  // Métodos específicos do PageNotFoundController podem ser adicionados aqui
 }

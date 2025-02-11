@@ -18,6 +18,12 @@ class _HomeViewState extends State<HomeView> {
   final controller = HomeController();
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StandardView(
       title: 'Home',
