@@ -1,0 +1,27 @@
+{
+    "explorer.compactFolders": false,
+    "explorer.expandSingleFolderWorkspaces": true,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": true,
+    "workbench.tree.indent": 12,
+    "workbench.tree.renderIndentGuides": "always",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "explorer.excludeGitIgnore": false,
+    "editor.renderWhitespace": "all",
+    "editor.guides.indentation": true,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.renderControlCharacters": true,
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#ffffff73",
+        "editorIndentGuide.background": "#ffffff73",
+        "editorIndentGuide.activeBackground": "#ffffff73"
+    }
+}

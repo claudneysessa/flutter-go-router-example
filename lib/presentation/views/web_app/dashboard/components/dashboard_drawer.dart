@@ -67,26 +67,35 @@ class DashboardDrawerState extends State<DashboardDrawer> {
         ),
       );
 
-      // Adiciona os itens do módulo
-      if (modulo.permissoes != null) {
-        for (var permissao in modulo.permissoes!) {
-          menuItems.add(
-            CustomDrawerButton(
-              key: ValueKey(permissao.permissao),
-              itemData: DashboardDrawerButtonItemData(
-                initialLocation: permissao.rota ?? '',
-                icon: widget.controller
-                    .getIconForPermission(permissao.permissao ?? ''),
-                label: permissao.nome,
+      // Adiciona os itens do módulo em um grid
+      if (modulo.permissoes != null && modulo.permissoes!.isNotEmpty) {
+        menuItems.add(
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            childAspectRatio: 2.5,
+            mainAxisSpacing: 1,
+            crossAxisSpacing: 1,
+            padding: const EdgeInsets.all(8),
+            children: modulo.permissoes!.map((permissao) {
+              return CustomDrawerButton(
+                key: ValueKey(permissao.permissao),
+                itemData: DashboardDrawerButtonItemData(
+                  initialLocation: permissao.rota ?? '',
+                  icon: widget.controller
+                      .getIconForPermission(permissao.permissao ?? ''),
+                  label: permissao.nome,
+                  permissionKey: permissao.permissao ?? '',
+                ),
+                state: state,
                 permissionKey: permissao.permissao ?? '',
-              ),
-              state: state,
-              permissionKey: permissao.permissao ?? '',
-              isSelected: false, // Removendo seleção inicial
-              onTap: () => widget.controller.toggleDrawerVisibility(),
-            ),
-          );
-        }
+                isSelected: false,
+                onTap: () => widget.controller.toggleDrawerVisibility(),
+              );
+            }).toList(),
+          ),
+        );
       }
 
       // Adiciona um divisor entre módulos

@@ -6,9 +6,7 @@ import 'package:spallawebapp/presentation/views/web_app/home/home_controller.dar
 class HomeView extends StatefulWidget {
   const HomeView({
     Key? key,
-  }) : super(
-          key: key,
-        );
+  }) : super(key: key);
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -30,16 +28,33 @@ class _HomeViewState extends State<HomeView> {
       child: ValueListenableBuilder<bool>(
         valueListenable: controller.isLoading,
         builder: (context, isLoading, child) {
-          return Center(
-            child: isLoading
-                ? const CircularProgressIndicator()
-                : Text(
-                    'Home',
-                    style: GoogleFonts.inter(
-                      color: Colors.black,
-                      fontSize: 24,
-                    ),
+          return Stack(
+            children: [
+              // Background com logo
+              Center(
+                child: Opacity(
+                  opacity: 0.1, // 10% de opacidade
+                  child: Image.asset(
+                    'assets/images/spalla_logo.png',
+                    width: 300, // Tamanho grande para o background
+                    height: 300,
+                    fit: BoxFit.contain,
                   ),
+                ),
+              ),
+              // Conteúdo centralizado
+              Center(
+                child: isLoading
+                    ? const CircularProgressIndicator()
+                    : Text(
+                        'Home',
+                        style: GoogleFonts.inter(
+                          color: Colors.black,
+                          fontSize: 24,
+                        ),
+                      ),
+              ),
+            ],
           );
         },
       ),

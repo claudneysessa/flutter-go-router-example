@@ -22,36 +22,34 @@ class CustomDrawerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
+    return Card(
+      margin: const EdgeInsets.all(4),
+      elevation: 2,
       child: InkWell(
         onTap: () {
-          // Navega para a rota
           context.go(itemData.initialLocation);
-          // Executa o callback para fechar o drawer
           onTap();
         },
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isSelected ? AppColors.blue : AppColors.white,
-            border: const Border(
-              bottom: BorderSide(
-                color: AppColors.greyDivider,
-                width: 1,
-              ),
-            ),
+            borderRadius: BorderRadius.circular(4),
           ),
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               itemData.icon,
-              const SizedBox(width: 16),
+              const SizedBox(height: 4),
               Text(
                 itemData.label ?? '',
                 style: TextStyle(
                   color: isSelected ? AppColors.white : AppColors.black,
+                  fontSize: 12,
                 ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

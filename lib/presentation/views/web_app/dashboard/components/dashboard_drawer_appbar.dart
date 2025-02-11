@@ -20,8 +20,16 @@ class DashboardDrawerAppBar extends StatefulWidget
     required this.onDrawerMenuTap,
   }) : super(key: key);
 
+  // Ajuste este valor para aumentar ou diminuir a altura do AppBar
+  // Valores sugeridos:
+  // - kToolbarHeight (56.0 - padrão)
+  // - 64.0 (um pouco maior)
+  // - 72.0 (ainda maior)
+  // - 80.0 (bem maior)
+  static const double appBarHeight = 65.0;
+
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(appBarHeight);
 
   @override
   State<DashboardDrawerAppBar> createState() => _DashboardDrawerAppBarState();
@@ -38,13 +46,16 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    final double iconSize = DashboardDrawerAppBar.appBarHeight * 0.6;
+    final double fontSize = DashboardDrawerAppBar.appBarHeight * 0.7;
+
     return AppBar(
       backgroundColor: AppColors.blueInfo,
+      toolbarHeight: DashboardDrawerAppBar.appBarHeight,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () =>
-              widget.onDrawerMenuTap(), // Chame a função de callback
+          icon: Icon(Icons.menu, size: iconSize * 0.7),
+          onPressed: () => widget.onDrawerMenuTap(),
         ),
       ),
       title: Row(
@@ -53,24 +64,22 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
             children: [
               Image.asset(
                 'assets/images/spalla_logo.png',
-                width: 32,
-                height: 32,
+                width: iconSize,
+                height: iconSize,
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 12),
               Text(
                 'Spalla',
                 style: GoogleFonts.inter(
                   color: AppColors.blueInfo,
-                  fontSize: 45,
+                  fontSize: fontSize,
                   fontWeight: FontWeight.w600,
                   letterSpacing: -2.5,
                 ),
               )
             ],
           ),
-          const SizedBox(
-            width: 50,
-          ),
+          SizedBox(width: DashboardDrawerAppBar.appBarHeight),
           Row(
             children: [
               Container(
@@ -91,13 +100,16 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
                   ),
                   child: Image.asset(
                     'assets/images/empresa_logo.png',
-                    width: 32,
-                    height: 32,
+                    width: iconSize,
+                    height: iconSize,
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
-              Text(widget.companyName),
+              const SizedBox(width: 12),
+              Text(
+                widget.companyName,
+                style: TextStyle(fontSize: fontSize * 0.35),
+              ),
             ],
           ),
         ],
@@ -112,12 +124,16 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
             }
           },
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
-                Text(widget.userName),
-                const SizedBox(width: 8),
+                Text(
+                  widget.userName,
+                  style: TextStyle(fontSize: fontSize * 0.35),
+                ),
+                const SizedBox(width: 12),
                 CircleAvatar(
+                  radius: iconSize * 0.4,
                   backgroundImage: AssetImage(widget.userAvatar),
                 ),
               ],
@@ -143,7 +159,7 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
             ),
           ),
           Positioned(
-            top: kToolbarHeight,
+            top: DashboardDrawerAppBar.appBarHeight,
             right: 0,
             child: Material(
               child: DashboardDrawerAppBarUserPanel(
