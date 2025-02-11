@@ -46,15 +46,15 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    final double iconSize = DashboardDrawerAppBar.appBarHeight * 0.6;
-    final double fontSize = DashboardDrawerAppBar.appBarHeight * 0.7;
+    const double iconSize = DashboardDrawerAppBar.appBarHeight * 0.6;
+    const double fontSize = DashboardDrawerAppBar.appBarHeight * 0.7;
 
     return AppBar(
       backgroundColor: AppColors.blueInfo,
       toolbarHeight: DashboardDrawerAppBar.appBarHeight,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.menu, size: iconSize * 0.7),
+          icon: const Icon(Icons.menu, size: iconSize * 0.7),
           onPressed: () => widget.onDrawerMenuTap(),
         ),
       ),
@@ -79,7 +79,7 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
               )
             ],
           ),
-          SizedBox(width: DashboardDrawerAppBar.appBarHeight),
+          const SizedBox(width: DashboardDrawerAppBar.appBarHeight),
           Row(
             children: [
               Container(
@@ -108,7 +108,7 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
               const SizedBox(width: 12),
               Text(
                 widget.companyName,
-                style: TextStyle(fontSize: fontSize * 0.35),
+                style: const TextStyle(fontSize: fontSize * 0.35),
               ),
             ],
           ),
@@ -129,7 +129,7 @@ class _DashboardDrawerAppBarState extends State<DashboardDrawerAppBar> {
               children: [
                 Text(
                   widget.userName,
-                  style: TextStyle(fontSize: fontSize * 0.35),
+                  style: const TextStyle(fontSize: fontSize * 0.35),
                 ),
                 const SizedBox(width: 12),
                 CircleAvatar(

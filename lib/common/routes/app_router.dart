@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logger/logger.dart';
 import 'package:spallawebapp/common/navigation/navigation_cubit.dart';
 import 'package:spallawebapp/infrastructure/services/navigation/navigation_service.dart';
 import 'package:spallawebapp/infrastructure/services/shared_preferences/shared_preferences_service.dart';
@@ -58,12 +56,6 @@ class AppRouter {
           GoRoute(
             path: AppRoutesNames.root,
             pageBuilder: (context, state) {
-              var queryParam = state.queryParams;
-
-              GetIt.I<Logger>().i(
-                'rota: ${state.location}\nqueryParam: $queryParam',
-              );
-
               return const NoTransitionPage(
                 child: HomeView(),
               );
@@ -72,12 +64,6 @@ class AppRouter {
           GoRoute(
             path: AppRoutesNames.homeNamedPage,
             pageBuilder: (context, state) {
-              var queryParam = state.queryParams;
-
-              GetIt.I<Logger>().i(
-                'rota: ${state.location}\nqueryParam: $queryParam',
-              );
-
               return const NoTransitionPage(
                 child: HomeView(),
               );
@@ -86,12 +72,6 @@ class AppRouter {
           GoRoute(
             path: AppRoutesNames.profile1NamedPage,
             pageBuilder: (context, state) {
-              var queryParam = state.queryParams;
-
-              GetIt.I<Logger>().i(
-                'rota: ${state.location}\nqueryParam: $queryParam',
-              );
-
               return const NoTransitionPage(
                 child: ProfileView(),
               );
@@ -100,12 +80,6 @@ class AppRouter {
           GoRoute(
             path: AppRoutesNames.profile2NamedPage,
             pageBuilder: (context, state) {
-              var queryParam = state.queryParams;
-
-              GetIt.I<Logger>().i(
-                'rota: ${state.location}\nqueryParam: $queryParam',
-              );
-
               return const NoTransitionPage(
                 child: ProfileView(),
               );
@@ -114,12 +88,6 @@ class AppRouter {
           GoRoute(
             path: AppRoutesNames.profile3NamedPage,
             pageBuilder: (context, state) {
-              var queryParam = state.queryParams;
-
-              GetIt.I<Logger>().i(
-                'rota: ${state.location}\nqueryParam: $queryParam',
-              );
-
               return const NoTransitionPage(
                 child: ProfileView(),
               );
@@ -128,12 +96,6 @@ class AppRouter {
           GoRoute(
             path: AppRoutesNames.settingsNamedPage,
             pageBuilder: (context, state) {
-              var queryParam = state.queryParams;
-
-              GetIt.I<Logger>().i(
-                'rota: ${state.location}\nqueryParam: $queryParam',
-              );
-
               return const NoTransitionPage(
                 child: SettingsView(),
               );
@@ -162,12 +124,6 @@ class AppRouter {
           GoRoute(
             path: AppRoutesNames.vendasNamedPage,
             pageBuilder: (context, state) {
-              var queryParam = state.queryParams;
-
-              GetIt.I<Logger>().i(
-                'rota: ${state.location}\nqueryParam: $queryParam',
-              );
-
               return const NoTransitionPage(
                 child: VendasView(),
               );
