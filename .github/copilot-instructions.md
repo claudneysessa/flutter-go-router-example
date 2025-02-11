@@ -14,6 +14,7 @@
 - Público-alvo: desenvolvedores com experiência avançada em outras linguagens, conhecimento intermediário em Dart/Flutter
 
 ## Princípios Fundamentais
+
 ### SOLID
 - Single Responsibility Principle
 - Open/Closed Principle
@@ -47,6 +48,7 @@
 - Incluir comentários detalhados
 - Usar nomes descritivos
 - Seguir convenções de estilo Dart/Flutter
+- Esta aplicação funciona somente para a plataforma web, nao devemos incluir nenhma lógica sobre outros sistemas como windows, linux, android ou OS
 
 ## Tipos de Perguntas
 ### Aceitas
